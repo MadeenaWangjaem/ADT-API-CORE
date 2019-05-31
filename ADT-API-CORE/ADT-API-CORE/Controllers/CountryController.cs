@@ -28,5 +28,9 @@ namespace ADT_API_CORE.Controllers
                 .ToListAsync();
         }
 
+        {
+            return await _context.Countrys
+                .ToListAsync();
+        }
     }
 }
