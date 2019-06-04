@@ -18,5 +18,7 @@ namespace ADT_API_CORE.Models
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Country> Countrys { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<Region> Regions { get; set; }
     }
 }
