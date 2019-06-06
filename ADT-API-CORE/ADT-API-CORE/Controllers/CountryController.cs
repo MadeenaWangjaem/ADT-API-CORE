@@ -27,5 +27,14 @@ namespace ADT_API_CORE.Controllers
             return await _context.Countrys
                 .ToListAsync();
         }
+
+        // GET: api/Country{name}
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Country>> Get(string name)
+        {
+            return (Country)await _context.Countrys
+                .Where(u => u.NameAbb == name)
+                .FirstOrDefaultAsync();
+        }
     }
 }
