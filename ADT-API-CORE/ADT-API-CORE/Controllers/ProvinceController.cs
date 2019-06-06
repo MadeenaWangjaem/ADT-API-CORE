@@ -38,6 +38,18 @@ namespace ADT_API_CORE.Controllers
                 .Include(u => u.Region)
                 .FirstOrDefaultAsync();
         }
+        // GET: api/Province{Country,Region}
+
+        [HttpGet("{country}/{region}")]
+        public async Task<ActionResult<IEnumerable<Province>>> GetProvince(string country, string region)
+        {
+            return await _context.Provinces
+                .Include(u => u.Country)
+                .Include(u => u.Region)
+                .Where(u => u.Country.Name == country)
+                .Where(u => u.Region.Name == region)
+                .ToListAsync();
+        }
         // POST: api/Province{name}
         [HttpPost]
         public async Task<ActionResult<Province>> Create([FromBody] Province item)

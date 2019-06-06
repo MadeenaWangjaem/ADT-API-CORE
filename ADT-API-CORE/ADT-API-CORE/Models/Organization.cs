@@ -11,34 +11,31 @@ namespace ADT_API_CORE.Models
     {
         public int OrganizationID { get; set; }
         public string Name { get; set; }
-        public Nullable<int> GroupID { get; set; }
+        public int GroupID { get; set; }
+        public int TypeID { get; set; }
         public string OfficePhone { get; set; }
         public string FAXNumber { get; set; }
         public string MobilePhone { get; set; }
         public string Email { get; set; }
+        public string TaxPayerID { get; set; }
         public string BillingAddress { get; set; }
-        public string BillingPOBox { get; set; }
-        public string BillingCity { get; set; }
-        public string BillingState { get; set; }
+        public string BillingProvince { get; set; }
         public string BillingPostCode { get; set; }
-        public Nullable<int> BillingCountry { get; set; }
+        public string BillingCountry { get; set; }
         public string ShippingAddress { get; set; }
-        public string ShippingPOBox { get; set; }
-        public string ShippingCity { get; set; }
-        public string ShippingState { get; set; }
+        public string ShippingProvince { get; set; }
         public string ShippingPostCode { get; set; }
-        public Nullable<int> ShippingCountry { get; set; }
+        public int ShippingCountry { get; set; }
         public string Description { get; set; }
-        public Nullable<bool> OrgaizationActive { get; set; }
-        public Nullable<System.Guid> rowguid { get; set; }
-        public System.DateTime CreatedDate { get; set; }
+        public bool OrgaizationActive { get; set; }
+        public Guid rowguid { get; set; }
+        public DateTime CreatedDate { get; set; }
         public string CreatedBy { get; set; }
-        public System.DateTime UpdatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
-        public Nullable<int> TypeID { get; set; }
         public string ParentRefCode { get; set; }
         public string ChildRefCode { get; set; }
-        public string TaxPayerID { get; set; }
+
 
         public Organization()
         {
