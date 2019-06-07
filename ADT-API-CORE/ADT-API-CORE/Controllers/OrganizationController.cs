@@ -20,7 +20,7 @@ namespace ADT_API_CORE.Controllers
             _context = context;
         }
 
-        // GET: api/OrganizationAll
+        // GET: api/Organization
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Organization>>> Get()
         {
@@ -28,12 +28,12 @@ namespace ADT_API_CORE.Controllers
                 .ToListAsync();
         }
 
-        // GET: api/Organization/{name}
-        [HttpGet("{name}")]
-        public async Task<ActionResult<Organization>> GetOrganization(string name)
+        // GET: api/Organization/organizationID
+        [HttpGet("{organizationID}")]
+        public async Task<ActionResult<Organization>> GetByIdO(int organizationID)
         {
             return (Organization)await _context.Organizations
-                .Where(u => u.Name == name)
+                .Where(u => u.OrganizationID == organizationID)
                 .FirstOrDefaultAsync();
         }
     }

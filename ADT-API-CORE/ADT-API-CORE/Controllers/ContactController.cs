@@ -27,16 +27,25 @@ namespace ADT_API_CORE.Controllers
                 .ToListAsync();
         }
 
-        // POST: api/Contact{ }
+        // POST: api/Contact { ContactID: }
         [HttpPost]
-        public async Task<ActionResult<Contact>> Create([FromBody] Contact item)
+        public async Task<ActionResult<Contact>> GetByIdC([FromBody] Contact item)
         {
             return (Contact)await _context.Contacts
                 .Where(u => u.ContactID == item.ContactID)
                 .Where(u => u.OrganizationID == item.OrganizationID)
                 .Include(u => u.Organization)
                 .FirstOrDefaultAsync();
+        }
 
+        [HttpGet("{contactID}/{organizationID}")]
+        public async Task<ActionResult<Contact>> GetByIdCO(int contactID,int organizationID)
+        {
+            return await _context.Contacts
+                .Where(u => u.ContactID == contactID)
+                .Where(u => u.OrganizationID == organizationID)
+                .Include(u => u.Organization)
+                .FirstOrDefaultAsync();
         }
 
     }

@@ -22,14 +22,15 @@ namespace ADT_API_CORE.Controllers
         
         // GET: api/User
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<ActionResult<IEnumerable<User>>> Get()
         {
             return await _context.Users 
                 .Include(u => u.Organization)
                 .Include(u => u.Contact)
                 .ToListAsync();
         }
-        // POST: api/User/Username/Password
+
+        // POST: api/User {"Username": "", "Password": ""}
         [HttpPost]
         public async Task<ActionResult<User>> Create([FromBody] User item)
         {
