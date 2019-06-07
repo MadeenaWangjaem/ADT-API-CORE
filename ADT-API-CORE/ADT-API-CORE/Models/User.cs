@@ -15,13 +15,11 @@ namespace ADT_API_CORE.Models
         public int OrganizationID { get; set; }
         public int ContactID { get; set; }
         public bool Active { get; set; }
-        public bool Admin { get; set; }
-        public bool SystemAdmin { get; set; }
-        public bool Buyer { get; set; }
-        public bool Seller { get; set; }
+
 
         public virtual Contact Contact { get; set; }
         public virtual Organization Organization { get; set; }
+       
 
         public User()
         {

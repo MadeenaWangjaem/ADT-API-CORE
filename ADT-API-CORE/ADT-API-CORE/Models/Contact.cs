@@ -24,11 +24,9 @@ namespace ADT_API_CORE.Models
         public string MobilePhone { get; set; }
         public string Email { get; set; }
         public string MailingAddress { get; set; }
-        public string MailingPOBox { get; set; }
-        public string MailingCity { get; set; }
-        public string MailingState { get; set; }
+        public string MailingProvince { get; set; }
         public string MailingPostCode { get; set; }
-        public Nullable<int> MailingCountry { get; set; }
+        public string MailingCountry { get; set; }
         public string OtherAddress { get; set; }
         public string OtherPOBox { get; set; }
         public string OtherCity { get; set; }
@@ -41,6 +39,8 @@ namespace ADT_API_CORE.Models
         public string CreatedBy { get; set; }
         public System.DateTime UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
+
+        public virtual Organization Organization { get; set; }
 
         public Contact()
         {

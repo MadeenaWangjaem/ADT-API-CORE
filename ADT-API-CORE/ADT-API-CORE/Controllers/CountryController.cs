@@ -22,10 +22,19 @@ namespace ADT_API_CORE.Controllers
 
         // GET: api/Country
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Country>>> GetCountry()
+        public async Task<ActionResult<IEnumerable<Country>>> Get()
         {
             return await _context.Countrys
                 .ToListAsync();
+        }
+
+        // GET: api/Country/countryId
+        [HttpGet("{countryId}")]
+        public async Task<ActionResult<Country>> GetByIdC(int countryId)
+        {
+            return (Country)await _context.Countrys
+                .Where(u => u.CountryId == countryId)
+                .FirstOrDefaultAsync();
         }
     }
 }
