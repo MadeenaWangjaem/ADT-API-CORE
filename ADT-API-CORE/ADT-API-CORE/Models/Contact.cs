@@ -10,13 +10,13 @@ namespace ADT_API_CORE.Models
     public class Contact
     {
         public int ContactID { get; set; }
+        public int? OrganizationID { get; set; }
         public string TitleName { get; set; }
         public string FirstName { get; set; }
         public string MidName { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
-        public int OrganizationID { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public string Title { get; set; }
         public string Department { get; set; }
         public string OfficePhone { get; set; }
@@ -26,18 +26,18 @@ namespace ADT_API_CORE.Models
         public string MailingAddress { get; set; }
         public string MailingProvince { get; set; }
         public string MailingPostCode { get; set; }
-        public string MailingCountry { get; set; }
+        public int MailingCountry { get; set; }
         public string OtherAddress { get; set; }
         public string OtherPOBox { get; set; }
         public string OtherCity { get; set; }
         public string OtherState { get; set; }
         public string OtherPostCode { get; set; }
-        public Nullable<int> OtherCountry { get; set; }
+        public int OtherCountry { get; set; }
         public string Description { get; set; }
-        public Nullable<System.Guid> rowguid { get; set; }
-        public System.DateTime CreatedDate { get; set; }
+        public Guid? rowguid { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public string CreatedBy { get; set; }
-        public System.DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
 
         public virtual Organization Organization { get; set; }

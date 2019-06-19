@@ -36,5 +36,14 @@ namespace ADT_API_CORE.Controllers
                 .Where(u => u.OrganizationID == organizationID)
                 .FirstOrDefaultAsync();
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Organization>> post(Organization organization)
+        {
+            await _context.Organizations.AddAsync(organization);
+            await _context.SaveChangesAsync();
+
+            return organization;
+        }
     }
 }
