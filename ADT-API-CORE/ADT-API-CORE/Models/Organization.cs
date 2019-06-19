@@ -11,8 +11,8 @@ namespace ADT_API_CORE.Models
     {
         public int OrganizationID { get; set; }
         public string Name { get; set; }
-        public int GroupID { get; set; }
-        public int TypeID { get; set; }
+        public int? GroupID { get; set; }
+        public int? TypeID { get; set; }
         public string OfficePhone { get; set; }
         public string FAXNumber { get; set; }
         public string MobilePhone { get; set; }
@@ -25,13 +25,13 @@ namespace ADT_API_CORE.Models
         public string ShippingAddress { get; set; }
         public string ShippingProvince { get; set; }
         public string ShippingPostCode { get; set; }
-        public int ShippingCountry { get; set; }
+        public int? ShippingCountry { get; set; }
         public string Description { get; set; }
-        public bool OrgaizationActive { get; set; }
-        public Guid rowguid { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public bool? OrgaizationActive { get; set; }
+        public Guid? rowguid { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public string CreatedBy { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public string ParentRefCode { get; set; }
         public string ChildRefCode { get; set; }

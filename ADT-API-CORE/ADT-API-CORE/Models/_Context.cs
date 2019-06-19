@@ -9,6 +9,7 @@ namespace ADT_API_CORE.Models
 
     public class _Context : DbContext
     {
+       
         public _Context(DbContextOptions<_Context> options)
            : base(options)
         {

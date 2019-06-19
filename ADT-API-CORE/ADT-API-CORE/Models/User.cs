@@ -24,5 +24,15 @@ namespace ADT_API_CORE.Models
         public User()
         {
         }
+        public User(String UserName)
+        {
+            this.UserName = UserName;
+        }
+        public User(String UserName,String Password)
+        {
+            this.UserName = UserName;
+            this.Password = Password;
+        }
+      
     }
 }
