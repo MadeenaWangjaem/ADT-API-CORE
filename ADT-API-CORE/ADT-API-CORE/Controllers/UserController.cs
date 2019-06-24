@@ -21,7 +21,7 @@ namespace ADT_API_CORE
             _context = context;
         }
         
-        // GET: api/User
+        // GET: api/User ssssscsc
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> Get()
         {
@@ -47,13 +47,11 @@ namespace ADT_API_CORE
                 jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(acc);
                 jsonRe.status   = true;
                 jsonRe.message  = "Success Respon 55";
-                jsonRe.user     = acc;
                 jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(jsonRe);
                 return jsonString;
             }
             jsonRe.status = false;
             jsonRe.message = "messageError555";
-            jsonRe.user = null;
            
             jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(jsonRe);
             return jsonString;

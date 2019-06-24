@@ -10,9 +10,8 @@ namespace ADT_API_CORE.Models
         public bool status;
         public String message;
 
-        public virtual User user { get; set; }
-
-
+        public int id;
+        public Country country;
 
         public ResponJson()
         {
