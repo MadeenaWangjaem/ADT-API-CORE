@@ -11,32 +11,48 @@ namespace ADT_API_CORE.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RegisterController : ControllerBase
+    public class SingUpAccController : ControllerBase
     {
         private _Context _context;
         private _Context _contextRepo;
 
-        public RegisterController(_Context registerContext, _Context contextRepo)
+        public SingUpAccController(_Context registerContext, _Context contextRepo)
         {
-            _context       = registerContext;
-            _contextRepo   = contextRepo;
+            _context        = registerContext;
+            _contextRepo    = contextRepo;
         }
 
         //POST: api/register {User: {}, Contant: {}, Organization: {}}
         [HttpPost]
-        public async Task<ActionResult<String>> PutUser([FromBody] User user)
+        public async Task<ActionResult<String>> singUpAcc([FromBody] User user)
         {
             String strRespon;
             ResponJson respon = new ResponJson();
+            // Clear because data insert 2 time
             user.Contact.OrganizationID = null;
             user.Contact.Organization = null;
-            using (var context = _contextRepo)
+
+            // Check userName in Database
+            User acc = (User)await _context.Users
+               .Where(u => u.UserName == user.UserName)
+               .Include(u => u.Organization)
+               .Include(u => u.Contact)
+               .FirstOrDefaultAsync();
+            // if true userName is unavailable
+            if (acc != null)
+            {
+                respon.status = false;
+                respon.message = "UserName is unavailable";
+                strRespon = Newtonsoft.Json.JsonConvert.SerializeObject(respon);
+                return strRespon;
+            }
+                using (var context = _contextRepo)
             {
                 using (var dbContextTransaction = context.Database.BeginTransaction())
                 {
                     try
                     {
-                        // add organization
+                        // Add organization
                         await context.Organizations.AddAsync(user.Organization);
                         await context.SaveChangesAsync();
 
@@ -51,10 +67,10 @@ namespace ADT_API_CORE.Controllers
                         dbContextTransaction.Commit();
 
 
-                        respon.status   = true;
-                        respon.message  = "Insert user success";
-                        //respon.user = user ;
-                        strRespon       = Newtonsoft.Json.JsonConvert.SerializeObject(respon);
+                        respon.status = true;
+                        respon.message = "Sing up success";
+                        //respon.id = user. ;
+                        strRespon = Newtonsoft.Json.JsonConvert.SerializeObject(respon);
 
                         return strRespon;
                     }
@@ -62,8 +78,8 @@ namespace ADT_API_CORE.Controllers
                     {
                         dbContextTransaction.Rollback();
 
-                        respon.status   = false;
-                        respon.message  = ex.Message;
+                        respon.status = false;
+                        respon.message = ex.Message;
                         strRespon = Newtonsoft.Json.JsonConvert.SerializeObject(respon);
                     }
                 }

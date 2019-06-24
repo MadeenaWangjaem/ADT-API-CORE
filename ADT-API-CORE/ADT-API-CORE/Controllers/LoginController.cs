@@ -25,9 +25,9 @@ namespace ADT_API_CORE.Controllers
         public async Task<ActionResult<User>> Create([FromBody] User item)
         {
             return (User)await _context.Users
-                .Where(u => u.UserName == item.UserName)
-                .Include(u => u.Organization)
-                .Include(u => u.Contact)
+                .Where(u    => u.UserName == item.UserName)
+                .Include(u  => u.Organization)
+                .Include(u  => u.Contact)
                 .FirstOrDefaultAsync();
         }
     }
